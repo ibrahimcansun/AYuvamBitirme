@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface INormalUserService
+    public interface IMainDeviceService
     {
-        List<NormalUser> GetAll();
-
+        List<MainDevice> GetAll();
+        MainDevice GetById(int mainDeviceId);
     }
 }

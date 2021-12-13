@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface INormalUserService
+    public interface IHomeService
     {
-        List<NormalUser> GetAll();
-
+        List<Home> GetAll();
     }
 }

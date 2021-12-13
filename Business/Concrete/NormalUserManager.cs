@@ -25,11 +25,6 @@ namespace Business.Concrete
             return _normalUserDal.GetAll();
         }
 
-        public List<NormalUser> GetAllByHomeId(int id)
-        {
-            return _normalUserDal.GetAll(u => u.HomeId == id);
-        }
-
 
     }
 }

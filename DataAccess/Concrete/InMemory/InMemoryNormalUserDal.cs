@@ -16,9 +16,9 @@ namespace DataAccess.Concrete.InMemory
         {
             _normalUsers = new List<NormalUser>
             {
-                new NormalUser{Email="ibolican2000@gmail.com", HomeId=1, Name="ibrahim", UserId=1, Password="123456"},
-                new NormalUser{Email="mehmet@gmail.com", HomeId=2, Name="mehmet", UserId=2, Password="123456"},
-                new NormalUser{Email="esra@gmail.com", HomeId=3, Name="esra", UserId=3, Password="123456"}
+                new NormalUser{Email="ibolican2000@gmail.com", Name="ibrahim", UserId=1, Password="123456"},
+                new NormalUser{Email="mehmet@gmail.com", Name="mehmet", UserId=2, Password="123456"},
+                new NormalUser{Email="esra@gmail.com", Name="esra", UserId=3, Password="123456"}
             };
         }
         public void Add(NormalUser normalUser)
@@ -48,11 +48,6 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
-        public List<NormalUser> GetAllByHome(int homeId)
-        {
-            return _normalUsers.Where(u => u.HomeId == homeId).ToList();
-        }
-
         public void Update(NormalUser normalUser)
         {
             NormalUser userToUpdate = _normalUsers.SingleOrDefault(u => u.UserId == normalUser.UserId);
@@ -60,7 +55,6 @@ namespace DataAccess.Concrete.InMemory
             userToUpdate.Name = normalUser.Name;
             userToUpdate.Password = normalUser.Password;
             userToUpdate.UserId = normalUser.UserId;
-            userToUpdate.HomeId = normalUser.HomeId;
 
         }
     }

@@ -13,7 +13,6 @@ namespace Entities.Concrete
     {
         [Key]
         public int UserId { get; set; }
-        public int HomeId { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }

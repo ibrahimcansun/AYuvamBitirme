@@ -10,7 +10,6 @@ namespace Entities.Abstract
     {
         public int StructureId { get; set; }
         public byte AreaId { get; set; }
-        public int UserId { get; set; }
         public string StructureName { get; set; }
     }
 }
