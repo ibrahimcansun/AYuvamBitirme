@@ -32,8 +32,8 @@ namespace WebAPI
         {
 
             services.AddControllers();
-            services.AddSingleton<IUserHomeService, UserHomeManager>();
-            services.AddSingleton<IUserHomeDal, EfUserHomeDal>();
+            //services.addsingleton<ýuserhomeservice, userhomemanager>();
+            //services.addsingleton<ýuserhomedal, efuserhomedal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

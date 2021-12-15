@@ -20,12 +20,40 @@ namespace WebAPI.Controllers
             _userHomeService = userHomeService;
         }
 
-        [HttpGet]
-        public List<UserHome> Get()
+        [HttpGet("getall")]
+        public IActionResult GetAll()
         {
             var result = _userHomeService.GetAll();
 
-            return result.Data;
+            if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
         }
+
+        [HttpGet("getbyhomeid")]
+        public IActionResult GetByHomeId(int homeId)
+        {
+            var result = _userHomeService.GetAllByHomeId(homeId);
+            
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        /*
+        [HttpPost]
+        public IActionResult Post(UserHome userHome)
+        {
+            var result = _userHomeService.Add(userHome);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }*/
     }
 }
