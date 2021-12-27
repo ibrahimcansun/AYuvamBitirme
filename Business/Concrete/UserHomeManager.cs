@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
+using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -19,7 +21,6 @@ namespace Business.Concrete
     public class UserHomeManager : IUserHomeService
     {
         IUserHomeDal _userHomeDal;
-
         public UserHomeManager(IUserHomeDal userHomeDal)
         {
             _userHomeDal = userHomeDal;
@@ -53,9 +54,31 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserHomeValidator))]
         public IResult Add(UserHome userHome)
         {
-            
+            IResult result = BusinessRules.Run(CheckIfUserHomeCountBigger(userHome.HomeId));
+
+            if (result != null)
+            {
+                return result;
+            }
+
             _userHomeDal.Add(userHome);
             return new SuccessResult(Messages.HomeAdded);
+        }
+        [ValidationAspect(typeof(UserHomeValidator))]
+        public IResult Update(UserHome userHome)
+        {
+            _userHomeDal.Update(userHome);
+            return new SuccessResult(Messages.HomeUpdated);
+        }
+
+        private IResult CheckIfUserHomeCountBigger(int homeId)
+        {
+            var result = _userHomeDal.GetAll(uhm => uhm.HomeId == homeId).Count();
+            if (result > 5)
+            {
+                return new ErrorResult(Messages.UserHomeBigger);
+            }
+            return new SuccessResult();
         }
     }
 }

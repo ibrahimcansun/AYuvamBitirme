@@ -16,5 +16,6 @@ namespace Business.Abstract
         IDataResult<List<UserHome>> GetAllByUserId(int userId);
         IDataResult<List<UserHome>> GetAllByHomeId(int homeId);
         IResult Add(UserHome userHome);
+        IResult Update(UserHome userHome);
     }
 }

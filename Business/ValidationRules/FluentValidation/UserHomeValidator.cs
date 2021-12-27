@@ -15,6 +15,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(uhm => uhm.HomeId).NotEmpty();
             RuleFor(uhm => uhm.UserId).NotEmpty();
             RuleFor(uhm => uhm.HomeId).GreaterThanOrEqualTo(1);
+            RuleFor(uhm => uhm.UserId).GreaterThanOrEqualTo(1);
         }
     }
 }

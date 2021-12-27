@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -18,10 +20,23 @@ namespace Business.Concrete
             _homeDal = homeDal;
         }
 
-        public List<Home> GetAll()
+        public IDataResult<List<Home>> GetAll()
         {
-            return _homeDal.GetAll();
+            return new SuccessDataResult<List<Home>>(_homeDal.GetAll(), Messages.HomesListed);
         }
+
+        public IResult Add(Home home)
+        {
+            _homeDal.Add(home);
+            return new SuccessResult(Messages.HomeAdded);
+        }
+
+        public IResult Update(Home home)
+        {
+            _homeDal.Add(home);
+            return new SuccessResult(Messages.HomeAdded);
+        }
+
 
     }
 }

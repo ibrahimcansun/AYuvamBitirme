@@ -17,7 +17,7 @@ namespace Entities.Concrete
         public int HomeId { get; set; }
         public string DeviceName { get; set; }
         public string DeviceProps { get; set; }
-        public byte analog { get; set; }
-        public byte digital { get; set; }
+        public byte Analog { get; set; }
+        public byte Digital { get; set; }
     }
 }

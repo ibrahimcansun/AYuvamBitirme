@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,10 @@ namespace Business.Abstract
 {
     public interface INormalUserService
     {
-        List<NormalUser> GetAll();
-
+        //List<NormalUser> GetAll();
+        IDataResult<List<NormalUser>> GetAll();
+        IDataResult<NormalUser> GetById(int userId);
+        IResult Add(NormalUser normalUser);
+        IResult Update(NormalUser normalUser);
     }
 }

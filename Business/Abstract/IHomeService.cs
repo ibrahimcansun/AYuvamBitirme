@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace Business.Abstract
 {
     public interface IHomeService
     {
-        List<Home> GetAll();
+        IDataResult<List<Home>> GetAll();
+        IResult Add(Home home);
+        IResult Update(Home home);
+
     }
 }
