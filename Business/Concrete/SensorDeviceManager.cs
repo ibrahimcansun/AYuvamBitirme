@@ -26,6 +26,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<SensorDevice>>(_sensorDeviceDal.GetAll(), Messages.SensorsListed);
         }
 
+        /*public IResult DeviceWork(SensorDevice sensorDevice)
+        {
+            _sensorDeviceDal.Update()
+            return new SuccessDataResult<SensorDevice>(_sensorDeviceDal.GetAll(sd => sd.DeviceId == sensorDevice.DeviceId), Messages.);
+        }*/
+
         [ValidationAspect(typeof(SensorDeviceValidator))]
         public IResult Add(SensorDevice sensorDevice)
         {

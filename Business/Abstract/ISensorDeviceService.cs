@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface ISensorDeviceService
     {
         IDataResult<List<SensorDevice>> GetAll();
+        //IDataResult<SensorDevice> DeviceWork(SensorDevice sensorDevice);
         IResult Add(SensorDevice sensorDevice);
         IResult Update(SensorDevice sensorDevice);
         IResult Delete(SensorDevice sensorDevice);

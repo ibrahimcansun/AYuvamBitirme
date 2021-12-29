@@ -18,5 +18,6 @@ namespace Entities.Concrete
         public string DeviceName { get; set; }
         public string DeviceProps { get; set; }
         public bool State { get; set; }
+        public string ConnectedPin { get; set; }
     }
 }

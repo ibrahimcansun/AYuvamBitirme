@@ -52,7 +52,7 @@ namespace ConsoleUI
                 Console.Write(userHome.StructureName + "\n");
             }
         }
-
+        /*
         private static void MainDeviceTest()
         {
             MainDeviceManager ma = new MainDeviceManager(new EfMainDeviceDal());
@@ -64,7 +64,7 @@ namespace ConsoleUI
                 Console.Write(device.HomeId + "\n");
             }
         }
-
+        /*
         private static void NormalUserTest()
         {
             NormalUserManager normalUserManager = new NormalUserManager(new EfNormalUserDal());
@@ -77,6 +77,6 @@ namespace ConsoleUI
             }
 
             Console.WriteLine("Hello World!");
-        }
+        }*/
     }
 }
