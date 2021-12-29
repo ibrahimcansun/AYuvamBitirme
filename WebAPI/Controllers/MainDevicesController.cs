@@ -10,19 +10,19 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NormalUsersController : ControllerBase
+    public class MainDevicesController : ControllerBase
     {
-        INormalUserService _userService;
+        IMainDeviceService _mainDeviceService;
 
-        public NormalUsersController(INormalUserService normalUserService)
+        public MainDevicesController(IMainDeviceService mainDeviceService)
         {
-            _userService = normalUserService;
+            _mainDeviceService = mainDeviceService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _mainDeviceService.GetAll();
 
             if (result.Success)
             {
@@ -32,9 +32,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(NormalUser normalUser)
+        public IActionResult Add(MainDevice mainDevice)
         {
-            var result = _userService.Add(normalUser);
+            var result = _mainDeviceService.Add(mainDevice);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -43,9 +43,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(NormalUser normalUser)
+        public IActionResult Update(MainDevice mainDevice)
         {
-            var result = _userService.Update(normalUser);
+            var result = _mainDeviceService.Update(mainDevice);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -54,14 +54,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(NormalUser normalUser)
+        public IActionResult Delete(MainDevice mainDevice)
         {
-            var result = _userService.Delete(normalUser);
+            var result = _mainDeviceService.Delete(mainDevice);
             if (result.Success)
             {
                 return Ok(result.Message);
             }
             return BadRequest(result.Message);
         }
+
     }
 }

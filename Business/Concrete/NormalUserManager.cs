@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<NormalUser> GetById(int userId)
         {
-            return new SuccessDataResult<NormalUser>(_normalUserDal.Get(u => u.UserId==userId));
+            return new SuccessDataResult<NormalUser>(_normalUserDal.Get(u => u.UserId == userId));
         }
 
         [ValidationAspect(typeof(NormalUserValidator))]
@@ -59,6 +59,12 @@ namespace Business.Concrete
             }
             _normalUserDal.Update(normalUser);
             return new SuccessResult(Messages.UserUpdated);
+        }
+
+        public IResult Delete(NormalUser normalUser)
+        {
+            _normalUserDal.Delete(normalUser);
+            return new SuccessResult(Messages.UserDeleted);
         }
 
         private IResult CheckIfUserEmailUsed(string email)

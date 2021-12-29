@@ -14,7 +14,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(h => h.StructureId).NotEmpty();
             RuleFor(h => h.AreaId).NotEmpty();
-            RuleFor(h => h.AreaId).LessThanOrEqualTo(Convert.ToByte(81));
+            RuleFor(h => h.AreaId).LessThanOrEqualTo(Convert.ToByte(82));
             RuleFor(h => h.StructureName).NotEmpty();
             RuleFor(h => h.StructureName).MaximumLength(30);
         }

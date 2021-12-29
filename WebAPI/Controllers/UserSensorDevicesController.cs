@@ -8,21 +8,18 @@ using System.Threading.Tasks;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class NormalUsersController : ControllerBase
+    public class UserSensorDevicesController : ControllerBase
     {
-        INormalUserService _userService;
-
-        public NormalUsersController(INormalUserService normalUserService)
+        IUserSensorDeviceService _userSensorDevice;
+        public UserSensorDevicesController(IUserSensorDeviceService userSensorDevice)
         {
-            _userService = normalUserService;
+            _userSensorDevice = userSensorDevice;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _userSensorDevice.GetAll();
 
             if (result.Success)
             {
@@ -32,9 +29,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(NormalUser normalUser)
+        public IActionResult Add(UserSensorDevice userSensorDevice)
         {
-            var result = _userService.Add(normalUser);
+            var result = _userSensorDevice.Add(userSensorDevice);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -43,9 +40,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(NormalUser normalUser)
+        public IActionResult Update(UserSensorDevice userSensorDevice)
         {
-            var result = _userService.Update(normalUser);
+            var result = _userSensorDevice.Update(userSensorDevice);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -54,9 +51,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(NormalUser normalUser)
+        public IActionResult Delete(UserSensorDevice userSensorDevice)
         {
-            var result = _userService.Delete(normalUser);
+            var result = _userSensorDevice.Delete(userSensorDevice);
             if (result.Success)
             {
                 return Ok(result.Message);

@@ -10,19 +10,18 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class NormalUsersController : ControllerBase
+    public class HomesController : ControllerBase
     {
-        INormalUserService _userService;
-
-        public NormalUsersController(INormalUserService normalUserService)
+        IHomeService _homeService;
+        public HomesController(IHomeService homeService)
         {
-            _userService = normalUserService;
+            _homeService = homeService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
+            var result = _homeService.GetAll();
 
             if (result.Success)
             {
@@ -32,9 +31,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(NormalUser normalUser)
+        public IActionResult Add(Home home)
         {
-            var result = _userService.Add(normalUser);
+            var result = _homeService.Add(home);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -43,9 +42,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("update")]
-        public IActionResult Update(NormalUser normalUser)
+        public IActionResult Update(Home home)
         {
-            var result = _userService.Update(normalUser);
+            var result = _homeService.Update(home);
             if (result.Success)
             {
                 return Ok(result.Message);
@@ -54,14 +53,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(NormalUser normalUser)
+        public IActionResult Delete(Home home)
         {
-            var result = _userService.Delete(normalUser);
+            var result = _homeService.Delete(home);
             if (result.Success)
             {
                 return Ok(result.Message);
             }
             return BadRequest(result.Message);
         }
+
     }
 }

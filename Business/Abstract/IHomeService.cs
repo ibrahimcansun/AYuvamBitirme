@@ -13,6 +13,6 @@ namespace Business.Abstract
         IDataResult<List<Home>> GetAll();
         IResult Add(Home home);
         IResult Update(Home home);
-
+        IResult Delete(Home home);
     }
 }

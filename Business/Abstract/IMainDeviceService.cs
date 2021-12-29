@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Utilities.Results;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,10 @@ namespace Business.Abstract
 {
     public interface IMainDeviceService
     {
-        List<MainDevice> GetAll();
-        MainDevice GetById(int mainDeviceId);
+        IDataResult<List<MainDevice>> GetAll();
+        IDataResult<List<MainDevice>> GetById(int mainDeviceId);
+        IResult Add(MainDevice mainDevice);
+        IResult Update(MainDevice mainDevice);
+        IResult Delete(MainDevice mainDevice);
     }
 }
